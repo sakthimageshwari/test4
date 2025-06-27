@@ -1,0 +1,185 @@
+<html>
+    <head>
+        <title>Question Page</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 20px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            td {
+                padding: 10px;
+                border: 1px solid #ddd;
+            }
+            input[type="radio"] {
+                margin-right: 10px;
+            }
+            button {
+                padding: 10px 15px;
+                background-color: #28a745;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #218838;
+            }
+            h1 {
+                text-align: center;
+                color: #333;
+            }
+            form {
+                max-width: 800px;
+                margin: auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            input[type="hidden"] {
+                display: none;
+            }
+            input[type="radio"] {
+                margin-right: 10px;
+            }
+            .question {
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            .options {
+                margin-bottom: 20px;
+            }
+            .options input {
+                margin-right: 5px;
+            }
+            .options label {
+                margin-right: 20px;
+            }
+            .submit-button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .submit-button:hover {
+                background-color: #0056b3;
+            }
+            .hidden {
+                display: none;
+            }
+            .score {
+                display: none;
+            }
+            .score.visible {
+                display: block;
+                margin-top: 20px;
+                font-size: 18px;
+                color: #28a745;
+            }
+            .error {
+                color: red;
+                font-weight: bold;
+            }
+            .success {
+                color: green;
+                font-weight: bold;
+            }
+            .question-text {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .options {
+                margin-bottom: 20px;
+            }
+            .options input[type="radio"] {
+                margin-right: 10px;
+            }
+            .options label {
+                margin-right: 20px;
+            }
+            .navigation-buttons {
+                display: flex;
+                justify-content: space-between;
+            }
+            .navigation-buttons {
+                display: flex;
+                justify-content: center;
+            }
+            .navigation-buttons button {
+                flex: 0 0 auto;
+                min-width: 100px;
+                margin: 0 5px;
+                font-size: 14px;
+                padding: 8px 12px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .navigation-buttons button:hover {
+                background-color: #0056b3;
+            }
+            .navigation-buttons button:disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
+            .question-container {
+                margin-bottom: 20px;
+                padding: 15px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+        </style>
+    </head>
+    <body>
+        
+        <header><b><h2><u><center>SCIENCE TEST</center></u></h2></b></header> 
+        <form action="/science/" method="get">
+            <input type="hidden" name="subject" value="science">
+        
+        
+           
+           
+           {% for x in myelements %}
+           <br><br>
+
+           {{ x.id }}.  {{x.question}}
+            <br><br>
+        <table width="50%">
+            
+            <input type="hidden" value="{{x.id|add:1}}" name="id_text"> 
+            <input type="hidden" value="{{score}}" name="score">
+            <tr>
+                <td><input type="radio" name="op" value="option a"><b> a. </b>{{x.option_1}}</td>
+                <td><input type="radio" name="op" value="option b"><b> b. </b>{{x.option_2}}</td>
+                <td><input type="radio" name="op" value="option c"><b> c. </b>{{x.option_3}}</td>
+                <td><input type="radio" name="op" value="option d"><b> d. </b>{{x.option_4}}</td>
+                
+            </tr>
+        </table><br><br>
+            {% if x.id > 9 %}
+            <button type="submit" name="submit2" value="save"> SAVE</button>
+            {% else  %}
+            <button type="submit" name="submit1" value="next"> NEXT</button>
+            {% endif %}
+            {% endfor %}
+       
+            
+        </form>
+    </body>
+
+
+
+</html>

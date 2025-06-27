@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>login page</title>
+        <style>
+            body {
+                background-color: #f0f0f0;
+                font-family: Arial, sans-serif;
+            }
+            h3 {
+                color: #333;
+            }
+            form {
+                background-color: #fff;
+                padding: 50px;
+                border-radius: 5px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                max-width: 300px;
+                margin: auto;
+            }
+            input[type="text"], input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                margin: 5px 0;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+            lable {
+                font-weight: bold;
+            }
+            h4 {
+                color: red;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h3><center><b><u><header>Login page</header></u></b></center></h3>
+        <div>
+            <form action="{% url 'quiz:logindb' %}" method="get">
+                <label for="Uname">User Name:</label><br>
+                <input type="text" name="uname"><br><br>
+                <label for="Pass">Password:</label><br>
+                <input type="password" name="pass"> <br><br>
+                <button type="submit" name="submit_btn" >Login</button><br><br>   
+                <h4>{{result}}</h4>         
+            </form>
+        </div>
+    </body>
+</html>
