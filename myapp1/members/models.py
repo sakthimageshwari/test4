@@ -5,7 +5,8 @@ from django.db import models
 
 
 
-class members_q_a(models.Model):
+class q_a(models.Model):
+    subject=models.CharField(max_length=255)
     question=models.CharField(max_length=255)
     option_1=models.CharField(max_length=255)
     option_2=models.CharField(max_length=255)

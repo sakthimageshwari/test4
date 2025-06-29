@@ -1,5 +1,29 @@
 create database testportal;
 use testportal;
+
+CREATE TABLE members_regform (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fname VARCHAR(255) NOT NULL,
+    lname VARCHAR(255) NOT NULL,
+    gender VARCHAR(255) NOT NULL,
+    dob DATE NOT NULL,
+    phone INT NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    uname VARCHAR(255) NOT NULL UNIQUE,
+    passcode VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE members_q_a (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    subject VARCHAR(255) NOT NULL,
+    question VARCHAR(255) NOT NULL,
+    option_1 VARCHAR(255) NOT NULL,
+    option_2 VARCHAR(255) NOT NULL,
+    option_3 VARCHAR(255) NOT NULL,
+    option_4 VARCHAR(255) NOT NULL,
+    answer VARCHAR(255) NOT NULL
+);
+
 select * from members_regform;
 drop table members_q_s;
 alter table members_q_a add subject varchar(20);
