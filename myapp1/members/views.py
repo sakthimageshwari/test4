@@ -1,8 +1,8 @@
 from django.shortcuts import render ,redirect
 from django.http import HttpResponse
 from django.template import loader
-from members.models import members_q_a  # Must match the model class name
-from . models import members_q_a
+#from members.models import members_q_a  # Must match the model class name
+from . models import q_a
 from . models import regform
 from django.urls import reverse
 
@@ -90,11 +90,11 @@ def science(request):
         if "op" in request.GET:
             check = request.GET.get(f"op_{a}")
 
-            correct=members_q_a.objects.filter(id=a).values_list('answer',flat=True).first()
+            correct=q_a.objects.filter(id=a).values_list('answer',flat=True).first()
             if check==correct:
                 score+=1
         a+=1   
-        elements = members_q_a.objects.filter(id=a).values()
+        elements = q_a.objects.filter(id=a).values()
         context = {'myelements':elements,'score':score,}
         return HttpResponse(template.render(context,request))
        
@@ -116,11 +116,11 @@ def record(request):
         if "op" in request.GET:
             check = request.GET.get(f"op_{a}")
 
-            correct=members_q_a.objects.filter(id=a).values_list('answer',flat=True).first()
+            correct=q_a.objects.filter(id=a).values_list('answer',flat=True).first()
             if check==correct:
                 score+=1
         a+=1   
-        elements =members_q_a.objects.filter(id=a).values()         
+        elements =q_a.objects.filter(id=a).values()         
         context = {'myelements':elements,'score':score,}
         return HttpResponse(template.render(context,request))
     
