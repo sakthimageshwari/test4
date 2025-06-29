@@ -7,11 +7,6 @@ from . models import regform
 from django.urls import reverse
 
 
-
-
-
-
-
 def members(request):
     template=loader.get_template('index.html')
     return HttpResponse(template.render())
@@ -45,15 +40,15 @@ def logindb(request):
     pa=request.GET.get("pass")
     check = regform.objects.filter(uname=un,passcode=pa).values()
     if check:
-        return redirect(reverse('quiz:subject'))
+        return redirect(reverse('quiz:dashboard'))
         
     else:
         template=loader.get_template('login.html')
         context = {'result':'Incorrect username or password,try again',}
         return HttpResponse(template.render(context,request))
     
-def subject(request):
-    return render(request, 'subject.html')
+def dashboard(request):
+    return render(request, 'dashboard.html')
 
 
 def sub_ch(request):
@@ -69,10 +64,12 @@ def sub_ch(request):
         return render(request, 'subject.html', {'result': 'please choose any subject'})
     '''
     subject = request.GET.get('subject')
-    if subject == 'science':
-        return redirect(reverse('quiz:science'))  # or render science template
-    elif subject == 'aptitude':
-        return redirect('record')   # or render aptitude template
+    return redirect(reverse('quiz:record') + f'?subject={subject}')
+
+    # if subject == 'science':
+    #     return redirect(reverse('quiz:science'))  # or render science template
+    # elif subject == 'aptitude':
+    #     return redirect('record')   # or render aptitude template
 
 def science(request):
     score=0
@@ -102,6 +99,7 @@ def science(request):
 
 def record(request):
     score=0
+    subject = request.GET.get('subject')
     if "score" in request.GET:
         score=int(request.GET["score"])
     if "submit2" in request.GET:

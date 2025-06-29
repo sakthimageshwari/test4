@@ -14,7 +14,7 @@ urlpatterns=[
     path('login',views.registerdb,name='registerdb'),
     path('login/', views.login, name='login'),
     
-    path('subject/',views.subject,name='subject'),
+    path('dashboard/',views.dashboard,name='dashboard'),
     path('science/',views.science,name='science'),
     path('sub_ch/', views.sub_ch, name='sub_ch'),
     path('record/', views.record, name='record'),
