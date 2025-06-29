@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Select Test Subject</title>
+  </head>
+  <body>
+    <header><h1>Select the subject for test</h1></header>
+    <form method="get" action="{% url 'quiz:sub_ch' %}">
+        <input type="hidden" name="subject" id="subject-input" value="">
+   
+  <select name="subject" id="subject-input" required>
+    <option value="" selected disabled>-- Choose an option --</option>
+    <option value="science">Science</option>
+    <option value="aptitude">Aptitude</option>
+  </select>
+
+  <br><br>
+  <button type="submit">Submit</button>
+
+      
+</form>
+  </body>
+</html>
